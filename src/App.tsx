@@ -1,5 +1,5 @@
 import { type ReactNode } from 'react';
-import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'; // Changed to HashRouter
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import Login from './pages/Login';
@@ -47,9 +47,9 @@ const NotificationContainer = () => {
 // --- MAIN APP COMPONENT ---
 function App() {
   return (
+    // 1. AuthProvider MUST wrap everything
     <AuthProvider>
-      {/* Using HashRouter for GitHub Pages compatibility */}
-      <HashRouter>
+      <BrowserRouter>
         <div className="bg-slate-900 min-h-screen text-slate-100 font-sans selection:bg-indigo-500 selection:text-white">
           <NotificationContainer />
           <Routes>
@@ -65,7 +65,7 @@ function App() {
             <Route path="*" element={<Navigate to="/dashboard" replace />} />
           </Routes>
         </div>
-      </HashRouter>
+      </BrowserRouter>
     </AuthProvider>
   );
 }

@@ -12,4 +12,5 @@ export default defineConfig({
       },
     }),
   ],
+  base: '/', // IMPORTANT for Netlify root
 })
